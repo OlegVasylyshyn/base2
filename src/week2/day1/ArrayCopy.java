@@ -1,5 +1,7 @@
 package week2.day1;
 
+import week3.day2.User;
+
 import java.util.Arrays;
 
 public class ArrayCopy {
@@ -18,7 +20,6 @@ public class ArrayCopy {
         for (int i = 0; i < nums2.length; i++) {
             nums2[i] = num[i];
         }
-
         System.out.println(Arrays.toString(nums2));
 
         // clone
