@@ -31,25 +31,46 @@ public class UserGroup {
     }
 
     public boolean removeUser(String name) {
+        int index = indexAt(name);
 
-        // TODO: 22.12.17 remove user by name
-        // TODO: 22.12.17 return true if was found and removed an user
+        if (index == -1) return false;
 
-        return false;
+        User[] newUsers = new User[users.length];
+        System.arraycopy(users, 0, newUsers, 0, index);
+        System.arraycopy(users, index + 1, newUsers, index, users.length - index - 1);
+        users = newUsers;
+        return true;
     }
 
     public int indexAt(String name){
-
-        // TODO: 22.12.17 find index of user
-
+        for (int i = 0; i < users.length; i++) {
+            if(users[i] != null && users[i].getName() != null){
+                if(users[i].getName().equals(name)){
+                    return i;
+                }
+            }
+        }
         return -1;
     }
 
     public User[] sort(){
+        User[] clone = users.clone();
 
-        // TODO: 22.12.17 return sorted copy of users . Sorted by name
+        for (int i = 0; i < users.length - 1; i++) {
+            for (int j = 0; j < clone.length - (1 + i); j++) {
 
-        return null;
+                if(clone[j] != null && clone[j].getName() != null && clone[j + 1] != null && clone[j + 1].getName() != null) {
+                    if (clone[j].getName().compareTo(clone[j + 1].getName()) > 0) {
+                        User tmp = clone[j];
+                        clone[j] = clone[j + 1];
+                        clone[j + 1] = tmp;
+                    }
+                }
+
+            }
+        }
+
+        return clone;
     }
 
     public User getUser(int index) {

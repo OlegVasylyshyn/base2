@@ -1,6 +1,6 @@
 package week3.day2;
 
-public class User {
+public class User extends Object {
 
     private String name;
     private int age;
@@ -30,6 +30,10 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String toString() {
+        return String.format("User : {name : %s, age : %d, pass = *****. }", name, age);
     }
 
 }
