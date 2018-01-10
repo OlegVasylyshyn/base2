@@ -1,62 +1,43 @@
 package week4.day2.student;
 
-import java.util.Scanner;
-
 public class School {
 
-    private static Scanner scanner = new Scanner(System.in);
+    public static final int ADD_NEW_STUDENT = 1;
+    public static final int REMOVE_STUDENT = 2;
+    public static final int DISPLAY_ALL_STUDENTS = 3;
+    public static final int EXIT = 9;
 
-    public static void main(String[] args) {
+    private StudentManager manager = new StudentManagerImpl();
 
-        System.out.println("Choose your act");
-        System.out.println("1) Add new student");
-        System.out.println("2) Remove student");
-        System.out.println("3) Show all students");
-        System.out.println("4) Show all students (sorted)");
-        System.out.println("5) Search");
-        System.out.println("6) Display student with max mark");
-        System.out.println("9) Exit");
+    public void run() {
 
         while (true) {
 
-            int chosenNumber = scanner.nextInt();
-
-            switch (chosenNumber) {
-
-                case 1 : {
-
-                    // TODO: 28.12.17 add new student
-
+            switch (manager.displayMenu()) {
+                case ADD_NEW_STUDENT: {
+                    manager.addNewStudent();
                     break;
                 }
 
-                case 2: {
-
-                    // TODO: 28.12.17 remove student
-
+                case REMOVE_STUDENT: {
+                    manager.removedStudent();
                     break;
                 }
 
-                case 3: {
-
-                    // TODO: 28.12.17 display all students
-
+                case DISPLAY_ALL_STUDENTS: {
+                    manager.displayStudents();
                     break;
                 }
 
-                case 9: {
+                case EXIT: {
                     System.out.println("Bye");
                     return;
                 }
-
 
             }
 
         }
 
-
-
     }
-
 
 }
