@@ -1,6 +1,6 @@
 package week4.day2.student;
 
-public class StudentGroup {
+public final class StudentGroup {
 
     private Student[] students = new Student[10];
     private int size;
